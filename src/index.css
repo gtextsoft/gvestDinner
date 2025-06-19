@@ -1,0 +1,82 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
+
+@layer base {
+  :root {
+    --background: 20 14% 4%;
+    --foreground: 45 100% 96%;
+
+    --card: 25 20% 8%;
+    --card-foreground: 45 100% 96%;
+
+    --popover: 25 20% 8%;
+    --popover-foreground: 45 100% 96%;
+
+    --primary: 45 100% 51%;
+    --primary-foreground: 20 14% 4%;
+
+    --secondary: 35 50% 25%;
+    --secondary-foreground: 45 100% 96%;
+
+    --muted: 25 20% 12%;
+    --muted-foreground: 45 20% 65%;
+
+    --accent: 45 100% 51%;
+    --accent-foreground: 20 14% 4%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 25 20% 18%;
+    --input: 25 20% 18%;
+    --ring: 45 100% 51%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 20 14% 4%;
+    --sidebar-foreground: 45 100% 96%;
+    --sidebar-primary: 45 100% 51%;
+    --sidebar-primary-foreground: 20 14% 4%;
+    --sidebar-accent: 25 20% 12%;
+    --sidebar-accent-foreground: 45 100% 96%;
+    --sidebar-border: 25 20% 18%;
+    --sidebar-ring: 45 100% 51%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+  }
+
+  .font-playfair {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+/* Custom gradient backgrounds */
+.hero-gradient {
+  background: linear-gradient(135deg, rgba(20, 14, 4, 0.95) 0%, rgba(45, 32, 12, 0.9) 50%, rgba(60, 40, 15, 0.95) 100%);
+}
+
+.card-gradient {
+  background: linear-gradient(145deg, rgba(25, 20, 8, 0.8) 0%, rgba(35, 25, 10, 0.9) 100%);
+}
+
+.golden-glow {
+  box-shadow: 0 0 30px rgba(255, 193, 7, 0.3);
+}
