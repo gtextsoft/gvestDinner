@@ -1,5 +1,5 @@
 /* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -57,6 +57,7 @@
 
   body {
     @apply bg-background text-foreground font-inter;
+    scroll-behavior: smooth;
   }
 
   .font-playfair {
@@ -70,13 +71,277 @@
 
 /* Custom gradient backgrounds */
 .hero-gradient {
-  background: linear-gradient(135deg, rgba(20, 14, 4, 0.95) 0%, rgba(45, 32, 12, 0.9) 50%, rgba(60, 40, 15, 0.95) 100%);
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255, 193, 7, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 193, 7, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(20, 14, 4, 0.95) 0%, rgba(45, 32, 12, 0.9) 50%, rgba(60, 40, 15, 0.95) 100%);
 }
 
 .card-gradient {
-  background: linear-gradient(145deg, rgba(25, 20, 8, 0.8) 0%, rgba(35, 25, 10, 0.9) 100%);
+  background: 
+    linear-gradient(145deg, rgba(25, 20, 8, 0.8) 0%, rgba(35, 25, 10, 0.9) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 193, 7, 0.1);
 }
 
 .golden-glow {
-  box-shadow: 0 0 30px rgba(255, 193, 7, 0.3);
+  box-shadow: 
+    0 0 30px rgba(255, 193, 7, 0.3),
+    0 0 60px rgba(255, 193, 7, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Enhanced animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 30px rgba(255, 193, 7, 0.3); }
+  50% { box-shadow: 0 0 45px rgba(255, 193, 7, 0.5); }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animation classes */
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: slide-up 0.8s ease-out forwards;
+}
+
+.animate-fade-in-scale {
+  animation: fade-in-scale 0.6s ease-out forwards;
+}
+
+.animate-fade-in-delay {
+  animation: slide-up 0.8s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-delay-2 {
+  animation: slide-up 0.8s ease-out 0.4s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-delay-3 {
+  animation: slide-up 0.8s ease-out 0.6s forwards;
+  opacity: 0;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(25, 20, 8, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 193, 7, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 193, 7, 0.5);
+}
+
+/* Hover effects */
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Form enhancements */
+.form-input {
+  transition: all 0.3s ease;
+  background: rgba(25, 20, 8, 0.5);
+  border: 1px solid rgba(255, 193, 7, 0.1);
+}
+
+.form-input:focus {
+  border-color: rgba(255, 193, 7, 0.5);
+  box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Premium button styles */
+.btn-premium {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%);
+  transition: all 0.3s ease;
+}
+
+.btn-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-premium:hover::before {
+  left: 100%;
+}
+
+.btn-premium:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
+}
+
+/* Loading states */
+.loading-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: calc(200px + 100%) 0; }
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .hero-gradient {
+    background: linear-gradient(135deg, rgba(20, 14, 4, 0.98) 0%, rgba(45, 32, 12, 0.95) 100%);
+  }
+}
+
+/* Focus visible for accessibility */
+*:focus-visible {
+  outline: 2px solid rgba(255, 193, 7, 0.6);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .card-gradient {
+    border: 2px solid rgba(255, 193, 7, 0.5);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-glow,
+  .animate-fade-in,
+  .animate-fade-in-scale,
+  .animate-fade-in-delay,
+  .animate-fade-in-delay-2,
+  .animate-fade-in-delay-3 {
+    animation: none;
+  }
+  
+  .hover-lift {
+    transition: none;
+  }
+  
+  .hover-lift:hover {
+    transform: none;
+  }
+}
+
+/* Professional spacing system */
+.section-spacing {
+  padding: 6rem 0;
+}
+
+.section-spacing-sm {
+  padding: 4rem 0;
+}
+
+.section-spacing-lg {
+  padding: 8rem 0;
+}
+
+/* Professional layout utilities */
+.content-width {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.content-width-narrow {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.content-width-wide {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Enhanced grid system */
+.grid-auto-fit {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.grid-auto-fill {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Professional text hierarchy */
+.text-hero {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+.text-section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.text-subsection-title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+/* Enhanced container system */
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1400px;
+  }
 }

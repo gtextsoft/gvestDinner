@@ -3,8 +3,8 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Phone, Globe, Facebook, Instagram, Video, CheckCircle2, XCircle, AlertCircle } from "lucide-react";
-import { useState } from "react";
+import { Phone, Globe, Facebook, Instagram, Video, CheckCircle2, XCircle, AlertCircle, Sparkles, Shield, Clock } from "lucide-react";
+import { useState, useEffect } from "react";
 
 const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -86,21 +86,33 @@ const ContactSection = () => {
   return (
     <section id="contact-section" className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-4">
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-medium mb-6">
+            <Sparkles className="w-4 h-4" />
+            Secure Your Spot
+          </div>
+          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-6 animate-fade-in">
             Get In Touch
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Ready to join Nigeria's most exclusive investor network? Contact us today to secure your spot.
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-4 animate-fade-in-delay">
+            Ready to join Nigeria's most exclusive investor network? 
+          </p>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in-delay-2">
+            Contact us today to secure your spot at these premium networking events.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Form */}
-          <Card className="p-8 card-gradient border-border/50">
-            <h3 className="font-playfair text-2xl font-bold text-foreground mb-6">
-              Reserve Your Seat
-            </h3>
+          <Card className="p-8 card-gradient border-border/50 hover-lift">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="p-2 bg-primary/10 rounded-lg">
+                <Shield className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="font-playfair text-2xl font-bold text-foreground">
+                Reserve Your Seat
+              </h3>
+            </div>
             
             {!isSubmitted ? (
               <form 
@@ -127,7 +139,7 @@ const ContactSection = () => {
                       placeholder="John"
                       value={formData.firstName}
                       onChange={(e) => handleInputChange('firstName', e.target.value)}
-                      className="bg-background/50 border-border text-foreground"
+                      className="form-input text-foreground"
                       required
                       maxLength={50}
                     />
@@ -140,7 +152,7 @@ const ContactSection = () => {
                       placeholder="Doe"
                       value={formData.lastName}
                       onChange={(e) => handleInputChange('lastName', e.target.value)}
-                      className="bg-background/50 border-border text-foreground"
+                      className="form-input text-foreground"
                       required
                       maxLength={50}
                     />
@@ -148,7 +160,7 @@ const ContactSection = () => {
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="email" className="text-foreground">Email *</Label>
+                  <Label htmlFor="email" className="text-foreground font-medium">Email *</Label>
                   <Input 
                     id="email" 
                     name="email"
@@ -156,14 +168,14 @@ const ContactSection = () => {
                     placeholder="invest@gvestglobal.com"
                     value={formData.email}
                     onChange={(e) => handleInputChange('email', e.target.value)}
-                    className="bg-background/50 border-border text-foreground"
+                    className="form-input text-foreground"
                     required
                     maxLength={100}
                   />
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="phone" className="text-foreground">Phone Number *</Label>
+                  <Label htmlFor="phone" className="text-foreground font-medium">Phone Number *</Label>
                   <Input 
                     id="phone" 
                     name="phone"
@@ -171,20 +183,20 @@ const ContactSection = () => {
                     placeholder="+234 XXX XXX XXXX"
                     value={formData.phone}
                     onChange={(e) => handleInputChange('phone', e.target.value)}
-                    className="bg-background/50 border-border text-foreground"
+                    className="form-input text-foreground"
                     required
                     maxLength={20}
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="category" className="text-foreground">Which applies to you? *</Label>
+                  <Label htmlFor="category" className="text-foreground font-medium">Which applies to you? *</Label>
                   <select 
                     id="category"
                     name="category"
                     value={formData.category}
                     onChange={(e) => handleInputChange('category', e.target.value)}
-                    className="w-full px-3 py-2 bg-background/50 border border-border rounded-md text-foreground"
+                    className="form-input w-full text-foreground"
                     required
                   >
                     <option value="">Select your category</option>
@@ -196,13 +208,13 @@ const ContactSection = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="source" className="text-foreground">How did you hear about us? *</Label>
+                  <Label htmlFor="source" className="text-foreground font-medium">How did you hear about us? *</Label>
                   <select 
                     id="source"
                     name="source"
                     value={formData.source}
                     onChange={(e) => handleInputChange('source', e.target.value)}
-                    className="w-full px-3 py-2 bg-background/50 border border-border rounded-md text-foreground"
+                    className="form-input w-full text-foreground"
                     required
                   >
                     <option value="">Select an option</option>
@@ -215,13 +227,13 @@ const ContactSection = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="availability" className="text-foreground">What is your availability? *</Label>
+                  <Label htmlFor="availability" className="text-foreground font-medium">What is your availability? *</Label>
                   <select 
                     id="availability"
                     name="availability"
                     value={formData.availability}
                     onChange={(e) => handleInputChange('availability', e.target.value)}
-                    className="w-full px-3 py-2 bg-background/50 border border-border rounded-md text-foreground"
+                    className="form-input w-full text-foreground"
                     required
                   >
                     <option value="">Select your preference</option>
@@ -231,50 +243,55 @@ const ContactSection = () => {
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="event" className="text-foreground">Preferred Event *</Label>
+                  <Label htmlFor="event" className="text-foreground font-medium">Preferred Event *</Label>
                   <select 
                     id="event"
                     name="event"
                     value={formData.event}
                     onChange={(e) => handleInputChange('event', e.target.value)}
-                    className="w-full px-3 py-2 bg-background/50 border border-border rounded-md text-foreground"
+                    className="form-input w-full text-foreground"
                     required
                   >
                     <option value="">Select an event</option>
-                    <option value="lagos">Lagos - June 29th, 2025</option>
+                    <option value="lagos">Lagos - July 18th, 2025</option>
                     <option value="abuja">Abuja - July 20th, 2025</option>
                     <option value="both">Both Events</option>
                   </select>
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="message" className="text-foreground">Message (Optional)</Label>
+                  <Label htmlFor="message" className="text-foreground font-medium">Message (Optional)</Label>
                   <Textarea 
                     id="message" 
                     name="message"
                     placeholder="Tell us about your investment interests..."
                     value={formData.message}
                     onChange={(e) => handleInputChange('message', e.target.value)}
-                    className="bg-background/50 border-border text-foreground min-h-[100px]"
+                    className="form-input text-foreground min-h-[100px]"
                     maxLength={1000}
                   />
                 </div>
                 
-                <Button 
-                  type="submit" 
-                  disabled={isSubmitting}
-                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold py-3"
-                  size="lg"
-                >
-                  {isSubmitting ? (
-                    <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin" />
-                      Submitting...
-                    </div>
-                  ) : (
-                    'Submit Registration'
-                  )}
-                </Button>
+                <div className="pt-4">
+                  <Button 
+                    type="submit" 
+                    disabled={isSubmitting}
+                    className="btn-premium w-full text-primary-foreground font-semibold py-6 text-lg rounded-xl hover-lift"
+                    size="lg"
+                  >
+                    {isSubmitting ? (
+                      <div className="flex items-center gap-2">
+                        <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                        Submitting Registration...
+                      </div>
+                    ) : (
+                      <div className="flex items-center gap-2">
+                        <Shield className="w-5 h-5" />
+                        Submit Registration
+                      </div>
+                    )}
+                  </Button>
+                </div>
               </form>
             ) : (
               <div className="space-y-6">
@@ -353,66 +370,118 @@ const ContactSection = () => {
 
           {/* Contact Information */}
           <div className="space-y-8">
-            <Card className="p-6 card-gradient border-border/50">
-              <h3 className="font-playfair text-2xl font-bold text-foreground mb-4">
-                Contact Information
-              </h3>
+            <Card className="p-6 card-gradient border-border/50 hover-lift">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2 bg-primary/10 rounded-lg">
+                  <Phone className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="font-playfair text-2xl font-bold text-foreground">
+                  Contact Information
+                </h3>
+              </div>
               
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <Phone className="w-5 h-5 text-primary" />
+              <div className="space-y-6">
+                <div className="flex items-start gap-4 p-4 rounded-lg bg-background/30 hover:bg-background/50 transition-colors duration-300">
+                  <div className="p-2 bg-primary/10 rounded-full">
+                    <Phone className="w-5 h-5 text-primary" />
+                  </div>
                   <div>
-                    <p className="text-foreground font-medium">For Enquiries Call:</p>
+                    <p className="text-foreground font-semibold mb-1">For Enquiries Call:</p>
                     <p className="text-primary font-bold text-lg">+234 809 999 0864</p>
+                    <p className="text-sm text-muted-foreground">Available 9AM - 6PM WAT</p>
                   </div>
                 </div>
                 
-                <div className="flex items-center gap-3">
-                  <Globe className="w-5 h-5 text-primary" />
+                <div className="flex items-start gap-4 p-4 rounded-lg bg-background/30 hover:bg-background/50 transition-colors duration-300">
+                  <div className="p-2 bg-primary/10 rounded-full">
+                    <Globe className="w-5 h-5 text-primary" />
+                  </div>
                   <div>
-                    <p className="text-foreground font-medium">Website:</p>
-                    <p className="text-primary">www.gvestglobal.com</p>
+                    <p className="text-foreground font-semibold mb-1">Website:</p>
+                    <p className="text-primary font-bold">www.gvestglobal.com</p>
+                    <p className="text-sm text-muted-foreground">Learn more about us</p>
                   </div>
                 </div>
               </div>
             </Card>
 
-            <Card className="p-6 card-gradient border-border/50">
-              <h3 className="font-playfair text-2xl font-bold text-foreground mb-4">
-                Follow Us
-              </h3>
+            <Card className="p-6 card-gradient border-border/50 hover-lift">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2 bg-primary/10 rounded-lg">
+                  <Instagram className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="font-playfair text-2xl font-bold text-foreground">
+                  Follow Us
+                </h3>
+              </div>
               
-              <div className="flex gap-4">
+              <div className="flex flex-col gap-3">
                 <Button 
                   variant="outline" 
-                  size="sm"
-                  className="border-primary/50 text-primary hover:bg-primary/10"
+                  size="lg"
+                  className="border-primary/50 text-primary hover:bg-primary/10 hover-lift justify-start"
                 >
-                  <Facebook className="w-4 h-4 mr-2" />
-                  Gvest
+                  <Facebook className="w-5 h-5 mr-3" />
+                  <div className="text-left">
+                    <div className="font-semibold">Gvest</div>
+                    <div className="text-sm text-muted-foreground">Facebook Page</div>
+                  </div>
                 </Button>
                 <Button 
                   variant="outline" 
-                  size="sm"
-                  className="border-primary/50 text-primary hover:bg-primary/10"
+                  size="lg"
+                  className="border-primary/50 text-primary hover:bg-primary/10 hover-lift justify-start"
                 >
-                  <Instagram className="w-4 h-4 mr-2" />
-                  @gvestcapitalglobal
+                  <Instagram className="w-5 h-5 mr-3" />
+                  <div className="text-left">
+                    <div className="font-semibold">@gvestcapitalglobal</div>
+                    <div className="text-sm text-muted-foreground">Instagram Handle</div>
+                  </div>
                 </Button>
               </div>
             </Card>
 
-            <Card className="p-6 card-gradient border-border/50">
-              <h3 className="font-playfair text-xl font-bold text-foreground mb-3">
-                Why Join?
-              </h3>
-              <ul className="space-y-2 text-muted-foreground">
-                <li>• Network with top investors</li>
-                <li>• Exclusive business opportunities</li>
-                <li>• Premium dining experience</li>
-                <li>• Strategic partnerships</li>
-                <li>• Industry insights</li>
+            <Card className="p-6 card-gradient border-border/50 hover-lift">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2 bg-primary/10 rounded-lg">
+                  <Sparkles className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="font-playfair text-xl font-bold text-foreground">
+                  Why Join?
+                </h3>
+              </div>
+              <ul className="space-y-3 text-muted-foreground">
+                {[
+                  'Network with top investors',
+                  'Exclusive business opportunities', 
+                  'Premium dining experience',
+                  'Strategic partnerships',
+                  'Industry insights'
+                ].map((benefit, index) => (
+                  <li key={benefit} className="flex items-center gap-3 p-2 rounded-lg hover:bg-background/30 transition-colors duration-300">
+                    <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                    <span className="font-medium">{benefit}</span>
+                  </li>
+                ))}
               </ul>
+            </Card>
+
+            {/* Added urgency indicator */}
+            <Card className="p-6 card-gradient border-border/50 hover-lift border-primary/30">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 bg-red-500/10 rounded-lg">
+                  <Clock className="w-6 h-6 text-red-400" />
+                </div>
+                <h3 className="font-playfair text-xl font-bold text-foreground">
+                  Limited Time
+                </h3>
+              </div>
+              <div className="space-y-2">
+                <p className="text-red-400 font-semibold">Early Bird Registration</p>
+                <p className="text-sm text-muted-foreground">
+                  Secure your spot now - seats are filling up fast for both exclusive events.
+                </p>
+              </div>
             </Card>
           </div>
         </div>
