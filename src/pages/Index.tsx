@@ -50,7 +50,7 @@ const Index = () => {
               time="4:00 PM Prompt"
               location="Lagos"
               venue="VI"
-              image="/flyer/67243d70-13f1-4159-af76-c32c13965ad7.png"
+              image="/flyer/GVLagos.jpg"
               isPrimary={true}
             />
             
@@ -60,7 +60,7 @@ const Index = () => {
               time="4:00 PM Prompt"
               location="Abuja"
               venue="Transcorp hilton hotel"
-              image="/lovable-uploads/5cde1083-c8e7-4461-9cbb-51f93eba424e.png"
+              image="/flyer/GVAbuja.jpg"
             />
           </div>
 
