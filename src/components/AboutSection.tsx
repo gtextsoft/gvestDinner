@@ -153,7 +153,7 @@ const AboutSection = () => {
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Award className="w-8 h-8 text-primary" />
               </div>
-              <h4 className="font-semibold text-foreground mb-2">Premium Venues</h4>
+              <h4 className="font-semibold text-foreground mb-2">Transcorp hilton hotels</h4>
               <p className="text-sm text-muted-foreground">
                 Exceptional locations that reflect the caliber of our network
               </p>

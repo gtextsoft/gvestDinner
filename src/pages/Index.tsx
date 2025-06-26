@@ -49,8 +49,8 @@ const Index = () => {
               date="Friday, 18th July 2025"
               time="4:00 PM Prompt"
               location="Lagos"
-              venue="The Wheatbaker Hotel"
-              image="/lovable-uploads/67243d70-13f1-4159-af76-c32c13965ad7.png"
+              venue="VI"
+              image="/flyer/67243d70-13f1-4159-af76-c32c13965ad7.png"
               isPrimary={true}
             />
             
@@ -59,7 +59,7 @@ const Index = () => {
               date="Sunday, 20th July 2025"
               time="4:00 PM Prompt"
               location="Abuja"
-              venue="Premium Venue"
+              venue="Transcorp hilton hotel"
               image="/lovable-uploads/5cde1083-c8e7-4461-9cbb-51f93eba424e.png"
             />
           </div>
@@ -84,7 +84,7 @@ const Index = () => {
                 <div className="bg-primary/10 border border-primary/30 rounded-2xl p-6 hover:bg-primary/15 transition-all duration-300 hover-lift">
                   <div className="text-primary font-bold text-3xl mb-2">Lagos</div>
                   <div className="text-foreground font-semibold mb-1">July 18th, 2025</div>
-                  <div className="text-muted-foreground text-sm mb-3">The Wheatbaker Hotel</div>
+                  <div className="text-muted-foreground text-sm mb-3">VI, Lagos</div>
                   <div className="flex items-center gap-2 text-sm text-primary">
                     <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
                     <span>4:00 PM Prompt</span>
@@ -94,7 +94,7 @@ const Index = () => {
                 <div className="bg-primary/10 border border-primary/30 rounded-2xl p-6 hover:bg-primary/15 transition-all duration-300 hover-lift">
                   <div className="text-primary font-bold text-3xl mb-2">Abuja</div>
                   <div className="text-foreground font-semibold mb-1">July 20th, 2025</div>
-                  <div className="text-muted-foreground text-sm mb-3">Premium Venue</div>
+                  <div className="text-muted-foreground text-sm mb-3">Transcorp hilton hotel</div>
                   <div className="flex items-center gap-2 text-sm text-primary">
                     <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
                     <span>4:00 PM Prompt</span>
