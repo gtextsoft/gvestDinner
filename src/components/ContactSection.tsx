@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Phone, Globe, Facebook, Instagram, Video, CheckCircle2, XCircle, AlertCircle, Sparkles, Shield, Clock } from "lucide-react";
+import { Phone, Globe, Facebook, Instagram, Twitter, Video, CheckCircle2, XCircle, AlertCircle, Sparkles, Shield, Clock } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const ContactSection = () => {
@@ -23,8 +23,7 @@ const ContactSection = () => {
   });
 
   const ZOOM_LINKS = {
-    lagos: 'https://us06web.zoom.us/meeting/register/0LzS-45BQyCD7HtEdn9sEg',
-    abuja: 'https://us06web.zoom.us/meeting/register/Ja7ujd14SqeMRlb1mYKtfQ'
+    akwaibom: 'https://us06web.zoom.us/meeting/register/GBLMi-tUSVq6WOO1Naon1Q'
   };
 
   const handleInputChange = (field: string, value: string) => {
@@ -253,9 +252,7 @@ const ContactSection = () => {
                     required
                   >
                     <option value="">Select an event</option>
-                    <option value="lagos">Lagos - July 18th, 2025</option>
-                    <option value="abuja">Abuja - July 20th, 2025</option>
-                    <option value="both">Both Events</option>
+                    <option value="akwaibom">Akwa Ibom - October 22nd, 2025</option>
                   </select>
                 </div>
                 
@@ -312,45 +309,15 @@ const ContactSection = () => {
                       Please click the button below to register for your virtual event:
                     </p>
                     <div className="space-y-3">
-                      {formData.event === 'lagos' && (
+                      {formData.event === 'akwaibom' && (
                         <Button
                           type="button"
                           variant="outline"
                           className="w-full border-primary/50 text-primary hover:bg-primary/10"
-                          onClick={() => window.open(ZOOM_LINKS.lagos, '_blank')}
+                          onClick={() => window.open(ZOOM_LINKS.akwaibom, '_blank')}
                         >
-                          Register for Lagos Virtual Event
+                          Register for Akwa Ibom Virtual Event
                         </Button>
-                      )}
-                      {formData.event === 'abuja' && (
-                        <Button
-                          type="button"
-                          variant="outline"
-                          className="w-full border-primary/50 text-primary hover:bg-primary/10"
-                          onClick={() => window.open(ZOOM_LINKS.abuja, '_blank')}
-                        >
-                          Register for Abuja Virtual Event
-                        </Button>
-                      )}
-                      {formData.event === 'both' && (
-                        <>
-                          <Button
-                            type="button"
-                            variant="outline"
-                            className="w-full border-primary/50 text-primary hover:bg-primary/10"
-                            onClick={() => window.open(ZOOM_LINKS.lagos, '_blank')}
-                          >
-                            Register for Lagos Virtual Event
-                          </Button>
-                          <Button
-                            type="button"
-                            variant="outline"
-                            className="w-full border-primary/50 text-primary hover:bg-primary/10"
-                            onClick={() => window.open(ZOOM_LINKS.abuja, '_blank')}
-                          >
-                            Register for Abuja Virtual Event
-                          </Button>
-                        </>
                       )}
                     </div>
                   </div>
@@ -387,7 +354,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <p className="text-foreground font-semibold mb-1">For Enquiries Call:</p>
-                    <p className="text-primary font-bold text-lg">+234 809 999 0864</p>
+                    <p className="text-primary font-bold text-lg">+234 701 408 7669</p>
                     <p className="text-sm text-muted-foreground">Available 9AM - 6PM WAT</p>
                   </div>
                 </div>
@@ -434,8 +401,19 @@ const ContactSection = () => {
                 >
                   <Instagram className="w-5 h-5 mr-3" />
                   <div className="text-left">
-                    <div className="font-semibold">@gvestcapitalglobal</div>
+                    <div className="font-semibold">@gvestcooperative</div>
                     <div className="text-sm text-muted-foreground">Instagram Handle</div>
+                  </div>
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="lg"
+                  className="border-primary/50 text-primary hover:bg-primary/10 hover-lift justify-start"
+                >
+                  <Twitter className="w-5 h-5 mr-3" />
+                  <div className="text-left">
+                    <div className="font-semibold">@gvestglobal</div>
+                    <div className="text-sm text-muted-foreground">Twitter Handle</div>
                   </div>
                 </Button>
               </div>
@@ -467,7 +445,7 @@ const ContactSection = () => {
             </Card>
 
             {/* Added urgency indicator */}
-            <Card className="p-6 card-gradient border-border/50 hover-lift border-primary/30">
+            <Card className="p-6 card-gradient border-primary/30 hover-lift">
               <div className="flex items-center gap-3 mb-4">
                 <div className="p-2 bg-red-500/10 rounded-lg">
                   <Clock className="w-6 h-6 text-red-400" />

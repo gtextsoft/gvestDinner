@@ -60,33 +60,22 @@ const HeroSection = () => {
         {/* Enhanced subtitle with better typography */}
         <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'animate-fade-in-delay' : 'opacity-0'}`}>
           <p className="text-xl md:text-2xl text-muted-foreground mb-4 max-w-3xl mx-auto leading-relaxed">
-            Join Nigeria's most <span className="text-primary font-semibold">exclusive investor networking dinners</span>. 
+            Join Nigeria's most <span className="text-primary font-semibold">exclusive investor networking dinner</span> in Akwa Ibom State. 
           </p>
           <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
-            Two premium events designed to connect visionaries and fuel innovation.
+            Connect with top investors and discover premium investment opportunities in Nigeria's emerging market.
           </p>
         </div>
 
-        {/* Enhanced CTA Buttons with better UX */}
-        <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center mb-8 transition-all duration-1000 delay-600 ${isVisible ? 'animate-fade-in-delay-2' : 'opacity-0'}`}>
+        {/* Enhanced CTA Button with better UX */}
+        <div className={`flex justify-center items-center mb-8 transition-all duration-1000 delay-600 ${isVisible ? 'animate-fade-in-delay-2' : 'opacity-0'}`}>
           <Button 
             onClick={scrollToContact}
             size="lg" 
             className="btn-premium text-primary-foreground font-semibold px-8 py-4 text-lg rounded-full golden-glow hover-lift group"
           >
             <span className="flex items-center gap-2">
-              Book Lagos Event
-              <Calendar className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-            </span>
-          </Button>
-          <Button 
-            onClick={scrollToContact}
-            variant="outline" 
-            size="lg"
-            className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold px-8 py-4 text-lg rounded-full hover-lift group transition-all duration-300"
-          >
-            <span className="flex items-center gap-2">
-              Book Abuja Event
+              Book Akwa Ibom Event
               <Calendar className="w-5 h-5 group-hover:rotate-12 transition-transform" />
             </span>
           </Button>
@@ -96,15 +85,15 @@ const HeroSection = () => {
         <div className={`mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto transition-all duration-1000 delay-800 ${isVisible ? 'animate-fade-in-delay-3' : 'opacity-0'}`}>
           <div className="flex items-center justify-center gap-3 text-muted-foreground hover:text-primary transition-colors duration-300 p-4 rounded-lg hover:bg-card/30">
             <Calendar className="w-5 h-5 text-primary" />
-            <span className="font-medium">Two Exclusive Events</span>
+            <span className="font-medium">October 22nd, 2025</span>
           </div>
           <div className="flex items-center justify-center gap-3 text-muted-foreground hover:text-primary transition-colors duration-300 p-4 rounded-lg hover:bg-card/30">
             <Clock className="w-5 h-5 text-primary" />
-            <span className="font-medium">4:00 PM Prompt</span>
+            <span className="font-medium">6:00 PM Prompt</span>
           </div>
           <div className="flex items-center justify-center gap-3 text-muted-foreground hover:text-primary transition-colors duration-300 p-4 rounded-lg hover:bg-card/30">
             <MapPin className="w-5 h-5 text-primary" />
-            <span className="font-medium">Lagos & Abuja</span>
+            <span className="font-medium">Uyo, Akwa Ibom</span>
           </div>
         </div>
 

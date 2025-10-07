@@ -117,6 +117,57 @@ const AboutSection = () => {
           </div>
         </div>
 
+        {/* Sponsorship Information */}
+        <div className="mt-20">
+          <div className="text-center mb-12">
+            <h3 className="font-playfair text-3xl font-bold text-foreground mb-4">
+              Proudly Sponsored By
+            </h3>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              This exclusive event is made possible by our valued sponsors
+            </p>
+          </div>
+
+          <Card className="p-8 md:p-12 card-gradient border-border/50 hover-lift max-w-4xl mx-auto">
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-500/10 rounded-full text-red-500 text-sm font-medium mb-4">
+                <Shield className="w-4 h-4" />
+                SPONSORED BY GVEST COOPERATIVE
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* GTEXT LAND */}
+              <div className="text-center p-6 rounded-xl bg-background/30 hover:bg-background/50 transition-colors duration-300">
+                <div className="w-20 h-20 bg-red-500/10 rounded-lg flex items-center justify-center mx-auto mb-4 relative">
+                  {/* Simple roof-like logo representation */}
+                  <div className="w-16 h-8 bg-red-500 rounded-t-lg relative">
+                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-green-500"></div>
+                  </div>
+                </div>
+                <h4 className="font-bold text-foreground text-lg mb-2">GTEXT LAND</h4>
+                <p className="text-sm text-muted-foreground">
+                  Premium land development and real estate solutions
+                </p>
+              </div>
+
+              {/* GTEXT HOMES */}
+              <div className="text-center p-6 rounded-xl bg-background/30 hover:bg-background/50 transition-colors duration-300">
+                <div className="w-20 h-20 bg-red-500/10 rounded-lg flex items-center justify-center mx-auto mb-4 relative">
+                  {/* Simple roof-like logo representation */}
+                  <div className="w-16 h-8 bg-red-500 rounded-t-lg relative">
+                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-blue-500"></div>
+                  </div>
+                </div>
+                <h4 className="font-bold text-foreground text-lg mb-2">GTEXT HOMES</h4>
+                <p className="text-sm text-muted-foreground">
+                  Luxury residential and commercial property development
+                </p>
+              </div>
+            </div>
+          </Card>
+        </div>
+
         {/* What Makes Us Different */}
         <div className="mt-20">
           <div className="text-center mb-12">
@@ -153,9 +204,9 @@ const AboutSection = () => {
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Award className="w-8 h-8 text-primary" />
               </div>
-              <h4 className="font-semibold text-foreground mb-2">Transcorp hilton hotels</h4>
+              <h4 className="font-semibold text-foreground mb-2">Premium Venue</h4>
               <p className="text-sm text-muted-foreground">
-                Exceptional locations that reflect the caliber of our network
+                Exceptional location in Akwa Ibom State that reflects the caliber of our network
               </p>
             </div>
           </div>

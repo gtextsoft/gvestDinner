@@ -35,33 +35,26 @@ const Index = () => {
               Upcoming Events
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-4 animate-fade-in-delay">
-              Two exclusive investor dinners across Nigeria's business capitals. 
+              Join us for an exclusive investor dinner in Akwa Ibom State. 
             </p>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in-delay-2">
-              Choose your preferred location or attend both for maximum networking opportunities.
+              Network with top investors and discover premium investment opportunities.
             </p>
           </div>
 
           {/* Event Cards */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto mb-20">
-            <EventCard
-              title="Gvest Dinner Lagos"
-              date="Friday, 18th July 2025"
-              time="4:00 PM Prompt"
-              location="Lagos"
-              venue="VI"
-              image="/flyer/GVLagos.jpg"
-              isPrimary={true}
-            />
-            
-            <EventCard
-              title="Gvest Dinner Abuja"
-              date="Sunday, 20th July 2025"
-              time="4:00 PM Prompt"
-              location="Abuja"
-              venue="Transcorp hilton hotel"
-              image="/flyer/GVAbuja.jpg"
-            />
+          <div className="flex justify-center mb-20">
+            <div className="w-full max-w-lg">
+              <EventCard
+                title="Akwa Ibom Investors Dinner"
+                date="Wednesday, 22nd October 2025"
+                time="6:00 PM Prompt"
+                location="Uyo"
+                venue="Akwa Ibom State"
+                image="/flyer/akwaibom.jpg"
+                isPrimary={true}
+              />
+            </div>
           </div>
 
           {/* Enhanced CTA Section */}
@@ -72,32 +65,24 @@ const Index = () => {
                   Don't Miss Out!
                 </h3>
                 <p className="text-xl text-muted-foreground mb-2">
-                  Limited seats available for these exclusive networking experiences.
+                  Limited seats available for this exclusive networking experience.
                 </p>
                 <p className="text-lg text-muted-foreground">
-                  Book today to secure your place at Nigeria's most prestigious investor events.
+                  Book today to secure your place at Nigeria's most prestigious investor dinner.
                 </p>
               </div>
               
-              {/* Event Summary Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-                <div className="bg-primary/10 border border-primary/30 rounded-2xl p-6 hover:bg-primary/15 transition-all duration-300 hover-lift">
-                  <div className="text-primary font-bold text-3xl mb-2">Lagos</div>
-                  <div className="text-foreground font-semibold mb-1">July 18th, 2025</div>
-                  <div className="text-muted-foreground text-sm mb-3">VI, Lagos</div>
-                  <div className="flex items-center gap-2 text-sm text-primary">
-                    <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                    <span>4:00 PM Prompt</span>
-                  </div>
-                </div>
-                
-                <div className="bg-primary/10 border border-primary/30 rounded-2xl p-6 hover:bg-primary/15 transition-all duration-300 hover-lift">
-                  <div className="text-primary font-bold text-3xl mb-2">Abuja</div>
-                  <div className="text-foreground font-semibold mb-1">July 20th, 2025</div>
-                  <div className="text-muted-foreground text-sm mb-3">Transcorp hilton hotel</div>
-                  <div className="flex items-center gap-2 text-sm text-primary">
-                    <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                    <span>4:00 PM Prompt</span>
+              {/* Event Summary Card */}
+              <div className="flex justify-center">
+                <div className="w-full max-w-md">
+                  <div className="bg-primary/10 border border-primary/30 rounded-2xl p-6 hover:bg-primary/15 transition-all duration-300 hover-lift">
+                    <div className="text-primary font-bold text-3xl mb-2 text-center">Uyo</div>
+                    <div className="text-foreground font-semibold mb-1 text-center">October 22nd, 2025</div>
+                    <div className="text-muted-foreground text-sm mb-3 text-center">Akwa Ibom State</div>
+                    <div className="flex items-center justify-center gap-2 text-sm text-primary">
+                      <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                      <span>6:00 PM Prompt</span>
+                    </div>
                   </div>
                 </div>
               </div>

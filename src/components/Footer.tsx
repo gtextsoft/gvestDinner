@@ -57,7 +57,7 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
                 <Phone className="w-4 h-4" />
-                <span>+234 809 999 0864</span>
+                <span>+234 701 408 7669</span>
               </div>
               <div className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
                 <Globe className="w-4 h-4" />
@@ -69,7 +69,7 @@ const Footer = () => {
               </div>
               <div className="flex items-start gap-3 text-muted-foreground hover:text-primary transition-colors">
                 <MapPin className="w-4 h-4 mt-0.5" />
-                <span>Lagos & Abuja, Nigeria</span>
+                <span>Uyo, Akwa Ibom State, Nigeria</span>
               </div>
             </div>
           </div>
