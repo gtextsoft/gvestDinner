@@ -16,7 +16,7 @@ const AboutSection = () => {
     {
       icon: TrendingUp,
       title: "Growth Opportunities",
-      description: "Access to funding, partnerships, and strategic insights that accelerate business growth."
+      description: "Access to funding, partnerships, strategic insights, and real estate investment opportunities that accelerate business growth."
     },
     {
       icon: Award,
@@ -29,7 +29,7 @@ const AboutSection = () => {
     { number: "500+", label: "Investors Connected" },
     { number: "₦50B+", label: "Deals Facilitated" },
     { number: "100+", label: "Successful Partnerships" },
-    { number: "50+", label: "Portfolio Companies" }
+    { number: "25%", label: "Max ROI on Investments" }
   ];
 
   return (
@@ -47,7 +47,8 @@ const AboutSection = () => {
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto animate-fade-in-delay">
             GVEST brings together the most influential minds in Nigeria's investment ecosystem, 
-            creating opportunities that shape the future of business across the continent.
+            creating opportunities that shape the future of business across the continent. From exclusive networking dinners 
+            to strategic real estate investments, we provide comprehensive solutions for wealth building and business growth.
           </p>
         </div>
 
