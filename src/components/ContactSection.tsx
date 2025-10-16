@@ -2,85 +2,9 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { Phone, Globe, Facebook, Instagram, Twitter, Video, CheckCircle2, XCircle, AlertCircle, Sparkles, Shield, Clock } from "lucide-react";
-import { useState, useEffect } from "react";
+import { Phone, Globe, Facebook, Instagram, Twitter, Sparkles, Shield, Clock } from "lucide-react";
 
 const ContactSection = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [submitError, setSubmitError] = useState<string | null>(null);
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    event: '',
-    message: '',
-    category: '',
-    source: '',
-    availability: ''
-  });
-
-  const ZOOM_LINKS = {
-    akwaibom: 'https://us06web.zoom.us/meeting/register/GBLMi-tUSVq6WOO1Naon1Q'
-  };
-
-  const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-    // Clear any previous error when user starts typing
-    if (submitError) setSubmitError(null);
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitError(null);
-
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    formData.append('subject', `New Registration - ${formData.get('event')} Event`);
-
-    try {
-      const response = await fetch('https://formspree.io/f/xkgbrgey', {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
-
-      if (response.ok) {
-        setIsSubmitted(true);
-      } else {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to submit form. Please try again.');
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      setSubmitError(error instanceof Error ? error.message : 'An unexpected error occurred. Please try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const showZoomLinks = isSubmitted && formData.availability === 'virtual' && formData.event;
-
-  const resetForm = () => {
-    setIsSubmitted(false);
-    setSubmitError(null);
-    setFormData({
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      event: '',
-      message: '',
-      category: '',
-      source: '',
-      availability: ''
-    });
-  };
 
   return (
     <section id="contact-section" className="py-20 bg-background">
@@ -113,226 +37,283 @@ const ContactSection = () => {
               </h3>
             </div>
             
-            {!isSubmitted ? (
-              <form 
-                onSubmit={handleSubmit} 
-                className="space-y-6"
-                action="https://formspree.io/f/xkgbrgey"
-                method="POST"
-              >
-                {submitError && (
-                  <div className="p-4 bg-destructive/10 border border-destructive/20 rounded-lg">
-                    <div className="flex items-center gap-2 text-destructive">
-                      <AlertCircle className="w-5 h-5" />
-                      <p className="font-medium">{submitError}</p>
-                    </div>
-                  </div>
-                )}
+            <form 
+              action="https://app.mailingboss.com/lists/68f106fb034fd/subscribe" 
+              method="post"
+              className="space-y-6"
+            >
+              <div className="space-y-2">
+                <Label htmlFor="EMAIL" className="text-foreground font-medium">E-mail *</Label>
+                <Input 
+                  id="EMAIL" 
+                  name="EMAIL"
+                  type="email" 
+                  placeholder="E-mail"
+                  className="form-input text-foreground"
+                  required
+                />
+              </div>
+              
+              <div className="space-y-2">
+                <Label htmlFor="FNAME" className="text-foreground font-medium">Name</Label>
+                <Input 
+                  id="FNAME" 
+                  name="FNAME"
+                  type="text" 
+                  placeholder="Name"
+                  className="form-input text-foreground"
+                />
+              </div>
+              
+              <div className="space-y-2">
+                <Label htmlFor="PHONE" className="text-foreground font-medium">Phone</Label>
+                <Input 
+                  id="PHONE" 
+                  name="PHONE"
+                  type="text" 
+                  placeholder="Phone"
+                  className="form-input text-foreground"
+                />
+              </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="firstName" className="text-foreground">First Name *</Label>
-                    <Input 
-                      id="firstName" 
-                      name="firstName"
-                      placeholder="John"
-                      value={formData.firstName}
-                      onChange={(e) => handleInputChange('firstName', e.target.value)}
-                      className="form-input text-foreground"
-                      required
-                      maxLength={50}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="lastName" className="text-foreground">Last Name *</Label>
-                    <Input 
-                      id="lastName" 
-                      name="lastName"
-                      placeholder="Doe"
-                      value={formData.lastName}
-                      onChange={(e) => handleInputChange('lastName', e.target.value)}
-                      className="form-input text-foreground"
-                      required
-                      maxLength={50}
-                    />
-                  </div>
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="email" className="text-foreground font-medium">Email *</Label>
-                  <Input 
-                    id="email" 
-                    name="email"
-                    type="email" 
-                    placeholder="invest@gvestglobal.com"
-                    value={formData.email}
-                    onChange={(e) => handleInputChange('email', e.target.value)}
-                    className="form-input text-foreground"
-                    required
-                    maxLength={100}
-                  />
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="phone" className="text-foreground font-medium">Phone Number *</Label>
-                  <Input 
-                    id="phone" 
-                    name="phone"
-                    type="tel" 
-                    placeholder="+234 XXX XXX XXXX"
-                    value={formData.phone}
-                    onChange={(e) => handleInputChange('phone', e.target.value)}
-                    className="form-input text-foreground"
-                    required
-                    maxLength={20}
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="category" className="text-foreground font-medium">Which applies to you? *</Label>
-                  <select 
-                    id="category"
-                    name="category"
-                    value={formData.category}
-                    onChange={(e) => handleInputChange('category', e.target.value)}
-                    className="form-input w-full text-foreground"
-                    required
-                  >
-                    <option value="">Select your category</option>
-                    <option value="investor">Investor</option>
-                    <option value="client">Client</option>
-                    <option value="associate">Associate</option>
-                    <option value="others">Others</option>
-                  </select>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="source" className="text-foreground font-medium">How did you hear about us? *</Label>
-                  <select 
-                    id="source"
-                    name="source"
-                    value={formData.source}
-                    onChange={(e) => handleInputChange('source', e.target.value)}
-                    className="form-input w-full text-foreground"
-                    required
-                  >
-                    <option value="">Select an option</option>
-                    <option value="referral">Referral</option>
-                    <option value="social_media">Social Media</option>
-                    <option value="email">Email</option>
-                    <option value="online">Online</option>
-                    <option value="others">Others</option>
-                  </select>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="availability" className="text-foreground font-medium">What is your availability? *</Label>
-                  <select 
-                    id="availability"
-                    name="availability"
-                    value={formData.availability}
-                    onChange={(e) => handleInputChange('availability', e.target.value)}
-                    className="form-input w-full text-foreground"
-                    required
-                  >
-                    <option value="">Select your preference</option>
-                    <option value="physical">Physical</option>
-                    <option value="virtual">Virtual</option>
-                  </select>
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="event" className="text-foreground font-medium">Preferred Event *</Label>
-                  <select 
-                    id="event"
-                    name="event"
-                    value={formData.event}
-                    onChange={(e) => handleInputChange('event', e.target.value)}
-                    className="form-input w-full text-foreground"
-                    required
-                  >
-                    <option value="">Select an event</option>
-                    <option value="akwaibom">Akwa Ibom - October 22nd, 2025</option>
-                  </select>
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="message" className="text-foreground font-medium">Message (Optional)</Label>
-                  <Textarea 
-                    id="message" 
-                    name="message"
-                    placeholder="Tell us about your investment interests..."
-                    value={formData.message}
-                    onChange={(e) => handleInputChange('message', e.target.value)}
-                    className="form-input text-foreground min-h-[100px]"
-                    maxLength={1000}
-                  />
-                </div>
-                
-                <div className="pt-4">
-                  <Button 
-                    type="submit" 
-                    disabled={isSubmitting}
-                    className="btn-premium w-full text-primary-foreground font-semibold py-6 text-lg rounded-xl hover-lift"
-                    size="lg"
-                  >
-                    {isSubmitting ? (
-                      <div className="flex items-center gap-2">
-                        <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin" />
-                        Submitting Registration...
-                      </div>
-                    ) : (
-                      <div className="flex items-center gap-2">
-                        <Shield className="w-5 h-5" />
-                        Submit Registration
-                      </div>
-                    )}
-                  </Button>
-                </div>
-              </form>
-            ) : (
-              <div className="space-y-6">
-                <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
-                  <div className="flex items-center gap-2 text-green-500">
-                    <CheckCircle2 className="w-5 h-5" />
-                    <p className="font-medium">Thank you for your registration! We'll be in touch soon.</p>
-                  </div>
-                </div>
-
-                {showZoomLinks && (
-                  <div className="space-y-4 p-4 bg-background/30 rounded-lg border border-primary/20">
-                    <h4 className="font-playfair text-lg font-semibold text-foreground flex items-center gap-2">
-                      <Video className="w-5 h-5 text-primary" />
-                      Virtual Event Registration
-                    </h4>
-                    <p className="text-muted-foreground text-sm">
-                      Please click the button below to register for your virtual event:
-                    </p>
-                    <div className="space-y-3">
-                      {formData.event === 'akwaibom' && (
-                        <Button
-                          type="button"
-                          variant="outline"
-                          className="w-full border-primary/50 text-primary hover:bg-primary/10"
-                          onClick={() => window.open(ZOOM_LINKS.akwaibom, '_blank')}
-                        >
-                          Register for Akwa Ibom Virtual Event
-                        </Button>
-                      )}
-                    </div>
-                  </div>
-                )}
-
-                <Button
-                  type="button"
-                  variant="outline"
-                  className="w-full border-primary/50 text-primary hover:bg-primary/10"
-                  onClick={resetForm}
+              <div className="space-y-2">
+                <Label htmlFor="PHONEPREFIX" className="text-foreground font-medium">Phone Prefix</Label>
+                <select 
+                  id="PHONEPREFIX"
+                  name="PHONEPREFIX"
+                  className="form-input w-full text-foreground"
                 >
-                  Register Another Person
+                  <option value="1USA">USA (+1)</option>
+                  <option value="55BRAZIL">Brazil (+55)</option>
+                  <option value="213ALGERIA">Algeria (+213)</option>
+                  <option value="376ANDORRA">Andorra (+376)</option>
+                  <option value="244ANGOLA">Angola (+244)</option>
+                  <option value="1264ANGUILLA">Anguilla (+1264)</option>
+                  <option value="1268ANTIGUABARBUDA">Antigua & Barbuda (+1268)</option>
+                  <option value="54ARGENTINA">Argentina (+54)</option>
+                  <option value="374ARMENIA">Armenia (+374)</option>
+                  <option value="297ARUBA">Aruba (+297)</option>
+                  <option value="61AUSTRALIA">Australia (+61)</option>
+                  <option value="43AUSTRIA">Austria (+43)</option>
+                  <option value="994AZERBAIJAN">Azerbaijan (+994)</option>
+                  <option value="1242BAHAMAS">Bahamas (+1242)</option>
+                  <option value="973BAHRAIN">Bahrain (+973)</option>
+                  <option value="880BANGLADESH">Bangladesh (+880)</option>
+                  <option value="1246BARBADOS">Barbados (+1246)</option>
+                  <option value="375BELARUS">Belarus (+375)</option>
+                  <option value="32BELGIUM">Belgium (+32)</option>
+                  <option value="501BELIZE">Belize (+501)</option>
+                  <option value="229BENIN">Benin (+229)</option>
+                  <option value="1441BERMUDA">Bermuda (+1441)</option>
+                  <option value="975BHUTAN">Bhutan (+975)</option>
+                  <option value="591BOLIVIA">Bolivia (+591)</option>
+                  <option value="387BOSNIAHERZEGOVINA">Bosnia Herzegovina (+387)</option>
+                  <option value="267BOTSWANA">Botswana (+267)</option>
+                  <option value="673BRUNEI">Brunei (+673)</option>
+                  <option value="359BULGARIA">Bulgaria (+359)</option>
+                  <option value="226BURKINAFASO">Burkina Faso (+226)</option>
+                  <option value="257BURUNDI">Burundi (+257)</option>
+                  <option value="855CAMBODIA">Cambodia (+855)</option>
+                  <option value="237CAMEROON">Cameroon (+237)</option>
+                  <option value="1CANADA">Canada (+1)</option>
+                  <option value="238CAPEVERDEISLANDS">Cape Verde Islands (+238)</option>
+                  <option value="1345CAYMANISLANDS">Cayman Islands (+1345)</option>
+                  <option value="236CENTRALAFRICANREPUBLIC">Central African Republic (+236)</option>
+                  <option value="56CHILE">Chile (+56)</option>
+                  <option value="86CHINA">China (+86)</option>
+                  <option value="57COLOMBIA">Colombia (+57)</option>
+                  <option value="269COMOROS">Comoros (+269)</option>
+                  <option value="242CONGO">Congo (+242)</option>
+                  <option value="682COOKISLANDS">Cook Islands (+682)</option>
+                  <option value="506COSTARICA">Costa Rica (+506)</option>
+                  <option value="385CROATIA">Croatia (+385)</option>
+                  <option value="53CUBA">Cuba (+53)</option>
+                  <option value="90392CYPRUSNORTH">Cyprus North (+90392)</option>
+                  <option value="357CYPRUSSOUTH">Cyprus South (+357)</option>
+                  <option value="420CZECHREPUBLIC">Czech Republic (+420)</option>
+                  <option value="45DENMARK">Denmark (+45)</option>
+                  <option value="253DJIBOUTI">Djibouti (+253)</option>
+                  <option value="1DOMINICA">Dominica (+1)</option>
+                  <option value="1DOMINICANREPUBLIC">Dominican Republic (+1)</option>
+                  <option value="593ECUADOR">Ecuador (+593)</option>
+                  <option value="20EGYPT">Egypt (+20)</option>
+                  <option value="503ELSALVADOR">El Salvador (+503)</option>
+                  <option value="240EQUATORIALGUINEA">Equatorial Guinea (+240)</option>
+                  <option value="291ERITREA">Eritrea (+291)</option>
+                  <option value="372ESTONIA">Estonia (+372)</option>
+                  <option value="251ETHIOPIA">Ethiopia (+251)</option>
+                  <option value="500FALKLANDISLANDS">Falkland Islands (+500)</option>
+                  <option value="298FAROEISLANDS">Faroe Islands (+298)</option>
+                  <option value="679FIJI">Fiji (+679)</option>
+                  <option value="358FINLAND">Finland (+358)</option>
+                  <option value="33FRANCE">France (+33)</option>
+                  <option value="594FRENCHGUIANA">French Guiana (+594)</option>
+                  <option value="689FRENCHPOLYNESIA">French Polynesia (+689)</option>
+                  <option value="241GABON">Gabon (+241)</option>
+                  <option value="220GAMBIA">Gambia (+220)</option>
+                  <option value="7880GEORGIA">Georgia (+7880)</option>
+                  <option value="49GERMANY">Germany (+49)</option>
+                  <option value="233GHANA">Ghana (+233)</option>
+                  <option value="350GIBRALTAR">Gibraltar (+350)</option>
+                  <option value="30GREECE">Greece (+30)</option>
+                  <option value="299GREENLAND">Greenland (+299)</option>
+                  <option value="1473GRENADA">Grenada (+1473)</option>
+                  <option value="590GUADELOUPE">Guadeloupe (+590)</option>
+                  <option value="671GUAM">Guam (+671)</option>
+                  <option value="502GUATEMALA">Guatemala (+502)</option>
+                  <option value="224GUINEA">Guinea (+224)</option>
+                  <option value="245GUINEABISSAU">Guinea - Bissau (+245)</option>
+                  <option value="592GUYANA">Guyana (+592)</option>
+                  <option value="509HAITI">Haiti (+509)</option>
+                  <option value="504HONDURAS">Honduras (+504)</option>
+                  <option value="852HONGKONG">Hong Kong (+852)</option>
+                  <option value="36HUNGARY">Hungary (+36)</option>
+                  <option value="354ICELAND">Iceland (+354)</option>
+                  <option value="91INDIA">India (+91)</option>
+                  <option value="62INDONESIA">Indonesia (+62)</option>
+                  <option value="98IRAN">Iran (+98)</option>
+                  <option value="964IRAQ">Iraq (+964)</option>
+                  <option value="353IRELAND">Ireland (+353)</option>
+                  <option value="972ISRAEL">Israel (+972)</option>
+                  <option value="39ITALY">Italy (+39)</option>
+                  <option value="1876JAMAICA">Jamaica (+1876)</option>
+                  <option value="81JAPAN">Japan (+81)</option>
+                  <option value="962JORDAN">Jordan (+962)</option>
+                  <option value="7KAZAKHSTAN">Kazakhstan (+7)</option>
+                  <option value="254KENYA">Kenya (+254)</option>
+                  <option value="686KIRIBATI">Kiribati (+686)</option>
+                  <option value="850KOREANORTH">Korea North (+850)</option>
+                  <option value="82KOREASOUTH">Korea South (+82)</option>
+                  <option value="965KUWAIT">Kuwait (+965)</option>
+                  <option value="996KYRGYZSTAN">Kyrgyzstan (+996)</option>
+                  <option value="856LAOS">Laos (+856)</option>
+                  <option value="371LATVIA">Latvia (+371)</option>
+                  <option value="961LEBANON">Lebanon (+961)</option>
+                  <option value="266LESOTHO">Lesotho (+266)</option>
+                  <option value="231LIBERIA">Liberia (+231)</option>
+                  <option value="218LIBYA">Libya (+218)</option>
+                  <option value="417LIECHTENSTEIN">Liechtenstein (+417)</option>
+                  <option value="370LITHUANIA">Lithuania (+370)</option>
+                  <option value="352LUXEMBOURG">Luxembourg (+352)</option>
+                  <option value="853MACAO">Macao (+853)</option>
+                  <option value="389MACEDONIA">Macedonia (+389)</option>
+                  <option value="261MADAGASCAR">Madagascar (+261)</option>
+                  <option value="265MALAWI">Malawi (+265)</option>
+                  <option value="60MALAYSIA">Malaysia (+60)</option>
+                  <option value="960MALDIVES">Maldives (+960)</option>
+                  <option value="223MALI">Mali (+223)</option>
+                  <option value="356MALTA">Malta (+356)</option>
+                  <option value="692MARSHALLISLANDS">Marshall Islands (+692)</option>
+                  <option value="596MARTINIQUE">Martinique (+596)</option>
+                  <option value="222MAURITANIA">Mauritania (+222)</option>
+                  <option value="269MAYOTTE">Mayotte (+269)</option>
+                  <option value="52MEXICO">Mexico (+52)</option>
+                  <option value="691MICRONESIA">Micronesia (+691)</option>
+                  <option value="373MOLDOVA">Moldova (+373)</option>
+                  <option value="377MONACO">Monaco (+377)</option>
+                  <option value="976MONGOLIA">Mongolia (+976)</option>
+                  <option value="1664MONTSERRAT">Montserrat (+1664)</option>
+                  <option value="212MOROCCO">Morocco (+212)</option>
+                  <option value="258MOZAMBIQUE">Mozambique (+258)</option>
+                  <option value="95MYANMAR">Myanmar (+95)</option>
+                  <option value="264NAMIBIA">Namibia (+264)</option>
+                  <option value="674NAURU">Nauru (+674)</option>
+                  <option value="977NEPAL">Nepal (+977)</option>
+                  <option value="31NETHERLANDS">Netherlands (+31)</option>
+                  <option value="687NEWCALEDONIA">New Caledonia (+687)</option>
+                  <option value="64NEWZEALAND">New Zealand (+64)</option>
+                  <option value="505NICARAGUA">Nicaragua (+505)</option>
+                  <option value="227NIGER">Niger (+227)</option>
+                  <option value="234NIGERIA">Nigeria (+234)</option>
+                  <option value="683NIUE">Niue (+683)</option>
+                  <option value="672NORFOLKISLANDS">Norfolk Islands (+672)</option>
+                  <option value="670NORTHERNMARIANAS">Northern Marianas (+670)</option>
+                  <option value="47NORWAY">Norway (+47)</option>
+                  <option value="968OMAN">Oman (+968)</option>
+                  <option value="680PALAU">Palau (+680)</option>
+                  <option value="507PANAMA">Panama (+507)</option>
+                  <option value="675PAPUANEWGUINEA">Papua New Guinea (+675)</option>
+                  <option value="595PARAGUAY">Paraguay (+595)</option>
+                  <option value="51PERU">Peru (+51)</option>
+                  <option value="63PHILIPPINES">Philippines (+63)</option>
+                  <option value="48POLAND">Poland (+48)</option>
+                  <option value="351PORTUGAL">Portugal (+351)</option>
+                  <option value="1787PUERTORICO">Puerto Rico (+1787)</option>
+                  <option value="974QATAR">Qatar (+974)</option>
+                  <option value="262REUNION">Reunion (+262)</option>
+                  <option value="40ROMANIA">Romania (+40)</option>
+                  <option value="7RUSSIA">Russia (+7)</option>
+                  <option value="250RWANDA">Rwanda (+250)</option>
+                  <option value="378SANMARINO">San Marino (+378)</option>
+                  <option value="239SAOTOMEPRINCIPE">Sao Tome & Principe (+239)</option>
+                  <option value="966SAUDIARABIA">Saudi Arabia (+966)</option>
+                  <option value="221SENEGAL">Senegal (+221)</option>
+                  <option value="381SERBIA">Serbia (+381)</option>
+                  <option value="248SEYCHELLES">Seychelles (+248)</option>
+                  <option value="232SIERRALEONE">Sierra Leone (+232)</option>
+                  <option value="65SINGAPORE">Singapore (+65)</option>
+                  <option value="421SLOVAKREPUBLIC">Slovak Republic (+421)</option>
+                  <option value="386SLOVENIA">Slovenia (+386)</option>
+                  <option value="677SOLOMONISLANDS">Solomon Islands (+677)</option>
+                  <option value="252SOMALIA">Somalia (+252)</option>
+                  <option value="27SOUTHAFRICA">South Africa (+27)</option>
+                  <option value="34SPAIN">Spain (+34)</option>
+                  <option value="94SRILANKA">Sri Lanka (+94)</option>
+                  <option value="290STHELENA">St. Helena (+290)</option>
+                  <option value="1869STKITTS">St. Kitts (+1869)</option>
+                  <option value="1758STLUCIA">St. Lucia (+1758)</option>
+                  <option value="249SUDAN">Sudan (+249)</option>
+                  <option value="597SURINAME">Suriname (+597)</option>
+                  <option value="268SWAZILAND">Swaziland (+268)</option>
+                  <option value="46SWEDEN">Sweden (+46)</option>
+                  <option value="41SWITZERLAND">Switzerland (+41)</option>
+                  <option value="963SYRIA">Syria (+963)</option>
+                  <option value="886TAIWAN">Taiwan (+886)</option>
+                  <option value="7TAJIKSTAN">Tajikstan (+7)</option>
+                  <option value="66THAILAND">Thailand (+66)</option>
+                  <option value="228TOGO">Togo (+228)</option>
+                  <option value="676TONGA">Tonga (+676)</option>
+                  <option value="1868TRINIDADTOBAGO">Trinidad & Tobago (+1868)</option>
+                  <option value="216TUNISIA">Tunisia (+216)</option>
+                  <option value="90TURKEY">Turkey (+90)</option>
+                  <option value="7TURKMENISTAN">Turkmenistan (+7)</option>
+                  <option value="993TURKMENISTAN">Turkmenistan (+993)</option>
+                  <option value="1649TURKSCAICOSISLANDS">Turks & Caicos Islands (+1649)</option>
+                  <option value="688TUVALU">Tuvalu (+688)</option>
+                  <option value="256UGANDA">Uganda (+256)</option>
+                  <option value="380UKRAINE">Ukraine (+380)</option>
+                  <option value="44UNITEDKINGDOM">United Kingdom (+44)</option>
+                  <option value="971UNITEDARABEMIRATES">United Arab Emirates (+971)</option>
+                  <option value="598URUGUAY">Uruguay (+598)</option>
+                  <option value="7UZBEKISTAN">Uzbekistan (+7)</option>
+                  <option value="678VANUATU">Vanuatu (+678)</option>
+                  <option value="379VATICANCITY">Vatican City (+379)</option>
+                  <option value="58VENEZUELA">Venezuela (+58)</option>
+                  <option value="84VIETNAM">Vietnam (+84)</option>
+                  <option value="84VIRGINISLANDSBRITISH">Virgin Islands - British (+84)</option>
+                  <option value="84VIRGINISLANDSUS">Virgin Islands - US (+84)</option>
+                  <option value="681WALLISFUTUNA">Wallis & Futuna (+681)</option>
+                  <option value="969YEMENNORTH">Yemen (North) (+969)</option>
+                  <option value="967YEMENSOUTH">Yemen (South) (+967)</option>
+                  <option value="260ZAMBIA">Zambia (+260)</option>
+                  <option value="263ZIMBABWE">Zimbabwe (+263)</option>
+                  <option value="599CURAAO">Curaçao (+599)</option>
+                </select>
+              </div>
+              
+              <div className="pt-4">
+                <Button 
+                  type="submit" 
+                  className="btn-premium w-full text-primary-foreground font-semibold py-6 text-lg rounded-xl hover-lift"
+                  size="lg"
+                >
+                  <div className="flex items-center gap-2">
+                    <Shield className="w-5 h-5" />
+                    Subscribe
+                  </div>
                 </Button>
               </div>
-            )}
+            </form>
           </Card>
 
           {/* Contact Information */}
