@@ -1,7 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Phone, Globe, Facebook, Instagram, Twitter, Sparkles, Shield, Clock } from "lucide-react";
 
 const ContactSection = () => {
@@ -39,49 +37,50 @@ const ContactSection = () => {
             
             <form 
               action="https://app.mailingboss.com/lists/68f106fb034fd/subscribe" 
-              method="post"
+              method="POST"
+              target="_blank"
               className="space-y-6"
             >
               <div className="space-y-2">
-                <Label htmlFor="EMAIL" className="text-foreground font-medium">E-mail *</Label>
-                <Input 
+                <label htmlFor="EMAIL" className="text-foreground font-medium block text-sm">E-mail *</label>
+                <input 
                   id="EMAIL" 
                   name="EMAIL"
                   type="email" 
                   placeholder="E-mail"
-                  className="form-input text-foreground"
+                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-foreground"
                   required
                 />
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="FNAME" className="text-foreground font-medium">Name</Label>
-                <Input 
+                <label htmlFor="FNAME" className="text-foreground font-medium block text-sm">Name</label>
+                <input 
                   id="FNAME" 
                   name="FNAME"
                   type="text" 
                   placeholder="Name"
-                  className="form-input text-foreground"
+                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-foreground"
                 />
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="PHONE" className="text-foreground font-medium">Phone</Label>
-                <Input 
+                <label htmlFor="PHONE" className="text-foreground font-medium block text-sm">Phone</label>
+                <input 
                   id="PHONE" 
                   name="PHONE"
-                  type="text" 
+                  type="tel" 
                   placeholder="Phone"
-                  className="form-input text-foreground"
+                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-foreground"
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="PHONEPREFIX" className="text-foreground font-medium">Phone Prefix</Label>
+                <label htmlFor="PHONEPREFIX" className="text-foreground font-medium block text-sm">Phone Prefix</label>
                 <select 
                   id="PHONEPREFIX"
                   name="PHONEPREFIX"
-                  className="form-input w-full text-foreground"
+                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-foreground"
                 >
                   <option value="1USA">USA (+1)</option>
                   <option value="55BRAZIL">Brazil (+55)</option>
