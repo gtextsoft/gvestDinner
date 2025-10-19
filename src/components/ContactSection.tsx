@@ -302,16 +302,13 @@ const ContactSection = () => {
               </div>
               
               <div className="pt-4">
-                <Button 
+                <button
                   type="submit" 
-                  className="btn-premium w-full text-primary-foreground font-semibold py-6 text-lg rounded-xl hover-lift"
-                  size="lg"
+                  className="btn-premium w-full text-primary-foreground font-semibold py-6 text-lg rounded-xl hover-lift inline-flex items-center justify-center gap-2 h-14 px-8"
                 >
-                  <div className="flex items-center gap-2">
-                    <Shield className="w-5 h-5" />
-                    Subscribe
-                  </div>
-                </Button>
+                  <Shield className="w-5 h-5" />
+                  Subscribe
+                </button>
               </div>
             </form>
           </Card>
